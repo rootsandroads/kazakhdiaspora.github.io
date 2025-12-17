@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles - Roots and Roads</title>
+  <style>
+    /* ========================================
+       CSS VARIABLES - Easy customization
+       ======================================== */
+    :root {
+      --bg-color: #f9f7f4;           /* Soft cream background */
+      --text-primary: #2c2c2c;       /* Deep charcoal */
+      --text-secondary: #5a5a5a;     /* Lighter gray for meta */
+      --border-color: #d4c5b9;       /* Soft tan border */
+      --border-hover: #a08d7e;       /* Darker on hover */
+      --shadow-light: rgba(0, 0, 0, 0.08);
+      --shadow-hover: rgba(0, 0, 0, 0.15);
+
+      --font-heading: 'Great Vibes', cursive;  /* Elegant script */
+      --font-title: 'Playfair Display', serif; /* Elegant serif */
+      --font-body: 'Montserrat', sans-serif;   /* Clean sans-serif */
+    }
+
+    /* ========================================
+       IMPORTS - Google Fonts
+       ======================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
+
+    /* ========================================
+       GLOBAL STYLES
+       ======================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    /* ========================================
+       CONTAINER - Main content wrapper
+       ======================================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       TOP SECTION - Page title and decorative line
+       ======================================== */
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .title-divider {
+      width: 45%;
+      max-width: 300px;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--border-color) 20%,
+        var(--border-color) 80%,
+        transparent
+      );
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       NAVIGATION LINK - Back to home
+       ======================================== */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    /* ========================================
+       ARTICLES GRID - Responsive card layout
+       ======================================== */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding: 20px 0;
+    }
+
+    /* Tablet: 2 columns */
+    @media (max-width: 900px) {
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .page-title {
+        font-size: 42px;
+      }
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 600px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .page-title {
+        font-size: 36px;
+      }
+
+      body {
+        padding: 30px 15px;
+      }
+    }
+
+    /* ========================================
+       ARTICLE CARD - Individual card styling
+       ======================================== */
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 30px;
+      min-height: 250px;
+
+      /* Rounded corners */
+      border-radius: 16px;
+
+      /* Hand-drawn style border effect */
+      background: white;
+      border: 2px solid var(--border-color);
+      box-shadow:
+        0 4px 12px var(--shadow-light),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+
+      /* Link styling */
+      text-decoration: none;
+      color: inherit;
+
+      /* Smooth transitions */
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* Hover effect - lift and darken border */
+    .article-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
+      box-shadow:
+        0 12px 24px var(--shadow-hover),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Card title */
+    .card-title {
+      font-family: var(--font-title);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 15px;
+      color: var(--text-primary);
+    }
+
+    /* Card meta information */
+    .card-meta {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+    }
+
+    /* ========================================
+       DECORATIVE ELEMENTS - Optional accents
+       ======================================== */
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .article-card:hover::before {
+      opacity: 0.1;
+    }
+
+    /* ========================================
+       ACCESSIBILITY - Focus states
+       ======================================== */
+    .article-card:focus {
+      outline: 2px solid var(--border-hover);
+      outline-offset: 4px;
+    }
+
+    .article-card:focus:not(:focus-visible) {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Back Navigation -->
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <!-- ========================================
+         TOP SECTION - Page header with title
+         ======================================== -->
+    <header class="page-header">
+      <h1 class="page-title">Articles</h1>
+      <div class="title-divider"></div>
+    </header>
+
+    <!-- ========================================
+         ARTICLES GRID - Six article cards
+         Edit titles, authors, dates, and links here
+         ======================================== -->
+    <section class="articles-grid">
+
+      <!-- Card 1 -->
+      <a href="article-student-migration.html" class="article-card">
+        <h2 class="card-title">Student Migration: is it really worth it?</h2>
+        <p class="card-meta">By Danelya · 01 December 2025</p>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="article-kazakhstan.html" class="article-card">
+        <h2 class="card-title">What Kazakh people wish people knew about Kazakhstan</h2>
+        <p class="card-meta">By Maria</p>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="article-children-migration.html" class="article-card">
+        <h2 class="card-title">Children Migration</h2>
+        <p class="card-meta">By Lidia</p>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="article-usa-to-italy.html" class="article-card">
+        <h2 class="card-title">From USA to Italy</h2>
+        <p class="card-meta">By Marie Allen</p>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="article-go-home-or-stay.html" class="article-card">
+        <h2 class="card-title">Go Home or Stay?</h2>
+        <p class="card-meta">By Aruzhan</p>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="article-experiences.html" class="article-card">
+        <h2 class="card-title">Experiences as a Foreign Student</h2>
+        <p class="card-meta">By Timur</p>
+      </a>
+
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life as a Kazakh Student in Seoul - Roots and Roads</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===================================
+       CSS VARIABLES
+       =================================== */
+    :root {
+      /* Colors */
+      --background: #fafaf8;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --text-muted: #a0aec0;
+      --accent: #667eea;
+      --accent-hover: #5a67d8;
+      --border-soft: #e2e8f0;
+
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Spacing */
+      --max-width: 720px;
+      --section-spacing: 3rem;
+    }
+
+    /* ===================================
+       RESET & BASE STYLES
+       =================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background-color: var(--background);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===================================
+       NAVIGATION
+       =================================== */
+    .top-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-soft);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    /* ===================================
+       ARTICLE CONTAINER
+       =================================== */
+    .article-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--section-spacing) 2rem;
+    }
+
+    /* ===================================
+       ARTICLE HEADER
+       =================================== */
+    .category-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .article-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===================================
+       AUTHOR META
+       =================================== */
+    .author-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .author-name {
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .author-name:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .article-meta-details {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ===================================
+       FEATURE IMAGE
+       =================================== */
+    .feature-image {
+      width: 100%;
+      height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      background: linear-gradient(135deg, #fbc2eb20 0%, #a6c1ee20 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===================================
+       ARTICLE BODY
+       =================================== */
+    .article-body {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body p:first-child::first-letter {
+      font-size: 4rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      line-height: 1;
+      float: left;
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 2rem;
+      margin: 2.5rem 0;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .article-body a:hover {
+      color: var(--accent-hover);
+    }
+
+    .article-body ul, .article-body ol {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* Interview styling */
+    .interview-q {
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+    .article-footer {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-soft);
+      text-align: center;
+    }
+
+    .share-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .share-btn {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      background: white;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .share-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ===================================
+       RESPONSIVE
+       =================================== */
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 2rem;
+      }
+
+      .article-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .feature-image {
+        height: 300px;
+        border-radius: 8px;
+      }
+
+      .article-body {
+        font-size: 17px;
+      }
+
+      .article-body p:first-child::first-letter {
+        font-size: 3rem;
+      }
+
+      .article-body blockquote {
+        padding-left: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Roots and Roads</a>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </nav>
+
+  <!-- Article Container -->
+  <article class="article-wrapper">
+
+    <!-- Article Header -->
+    <div class="category-label">FEATURED INTERVIEW</div>
+
+    <h1 class="article-title">Life as a Kazakh Student in Seoul</h1>
+
+    <p class="article-subtitle">
+      I chose South Korea for its blend of tradition and innovation. As a Kazakh student here, I've discovered surprising cultural similarities—and learned that home can exist in more than one place.
+    </p>
+
+    <!-- Author Meta -->
+    <div class="author-meta">
+      <div class="author-avatar">A</div>
+      <div class="author-info">
+        <div class="author-name">Interview with Aruzhan M.</div>
+        <div class="article-meta-details">December 8, 2025 · 10 min read</div>
+      </div>
+    </div>
+
+    <!-- Feature Image -->
+    <div class="feature-image">
+      <!-- Replace with actual image: <img src="seoul-cover.jpg" alt="Seoul interview cover"> -->
+      Feature Image Placeholder
+    </div>
+
+    <!-- Article Body -->
+    <div class="article-body">
+      <p>
+        Aruzhan Maulen is a 22-year-old International Relations student at Korea University in Seoul. Originally from Shymkent, she moved to South Korea three years ago to pursue her undergraduate degree. We sat down with her (virtually, across time zones) to discuss her experience as a Kazakh student in one of Asia's most dynamic cities.
+      </p>
+
+      <p class="interview-q">
+        Let's start at the beginning. Why South Korea? It's not the most obvious choice for Kazakh students.
+      </p>
+
+      <p>
+        That's exactly why I chose it! Everyone I knew was going to the US, UK, or Russia. I wanted something different. South Korea offered this fascinating blend of deep tradition and cutting-edge modernity. Plus, the Korean government offers generous scholarships for international students, which made it financially possible.
+      </p>
+
+      <p>
+        But honestly? K-pop and K-dramas definitely played a role in my initial interest. I'm not embarrassed to admit that. They gave me a window into Korean culture, even if it was a romanticized one. What I discovered when I actually arrived was so much richer than what I'd seen on screen.
+      </p>
+
+      <p class="interview-q">
+        What surprised you most when you first arrived in Seoul?
+      </p>
+
+      <p>
+        How hierarchical everything is! Korean culture has this intricate system of age-based respect that's baked into the language itself. There are different verb endings depending on whether you're speaking to someone older, younger, or the same age as you. Coming from Kazakhstan, where we also have respect for elders but less linguistic formality, it took serious adjustment.
+      </p>
+
+      <p>
+        I also didn't expect how welcoming Koreans would be once they got past initial shyness. There's this stereotype that Korean society is homogeneous and closed to foreigners, but I've found people genuinely curious and kind once you make an effort to understand their culture.
+      </p>
+
+      <blockquote>
+        "Seoul taught me that adaptation isn't about erasing your own culture—it's about making space for both cultures to coexist within you."
+      </blockquote>
+
+      <p class="interview-q">
+        You mentioned making an effort to understand Korean culture. What did that look like practically?
+      </p>
+
+      <p>
+        Learning the language was non-negotiable. I arrived with basic Korean from self-study, but I threw myself into becoming fluent. I took intensive language courses, watched Korean variety shows without subtitles, practiced with language exchange partners. After three years, I can handle daily conversations, read newspapers, and even catch nuances in humor.
+      </p>
+
+      <p>
+        But beyond language, I studied social norms. How to properly receive objects with two hands. When to bow and how deeply. The drinking etiquette (very important in Korean social culture!). These small gestures matter enormously here.
+      </p>
+
+      <p class="interview-q">
+        Did you find any unexpected similarities between Kazakh and Korean cultures?
+      </p>
+
+      <p>
+        So many! Both cultures have this deep respect for education and family. The collectivist mindset where group harmony matters more than individual expression. The food culture—we both love fermented foods, grilled meat, and eating communally.
+      </p>
+
+      <p>
+        There are even linguistic connections. Some Korean words have Altaic roots similar to Turkic languages. When I learned that Seoul was called "Seorabol" historically, potentially connected to the Turkic word "saray" meaning palace, I felt this unexpected historical connection.
+      </p>
+
+      <p>
+        And the nomadic heritage! Koreans don't talk about it as much, but there are historical connections to Central Asian peoples. Understanding this shared history helped me feel less foreign.
+      </p>
+
+      <p class="interview-q">
+        What's the Kazakh student community like in Seoul?
+      </p>
+
+      <p>
+        Small but tight-knit! There are maybe 200-300 Kazakh students across all of Seoul's universities. We find each other through Facebook groups and university Kazakh student associations. Every few months, someone organizes a gathering where we make plov together, celebrate Nauryz, or just speak Russian and Kazakh without having to translate our thoughts.
+      </p>
+
+      <p>
+        These gatherings are vital for mental health. Don't get me wrong—I love my Korean and international friends. But there's something healing about being with people who just *get* your cultural references, who understand the specific pressures of being a Kazakh student abroad.
+      </p>
+
+      <p class="interview-q">
+        Speaking of pressure—what are the biggest challenges you've faced?
+      </p>
+
+      <p>
+        The academic intensity was shocking initially. Korean universities have this "study until you collapse" culture. Students regularly pull all-nighters, libraries are packed at 2 AM, and the competition is fierce. I'd always been a good student in Kazakhstan, but here I had to completely level up my work ethic.
+      </p>
+
+      <p>
+        Social integration was also harder than expected. Korean friend groups are often established in high school and university admission. As a foreigner, you're interesting but somewhat perpetually on the periphery. I've made good Korean friends, but it took persistent effort and cultural sensitivity.
+      </p>
+
+      <p>
+        And of course, homesickness. Seoul is beautiful and exciting, but it's not home. Missing family events, Kazakh holidays, even just speaking Kazakh regularly—that ache doesn't fully go away.
+      </p>
+
+      <p class="interview-q">
+        How do you handle homesickness?
+      </p>
+
+      <p>
+        I've learned to create "home" in small ways. I keep Kazakh tea in my apartment. I cook familiar foods—granted, with some ingredient substitutions from Korean markets. I video call my family religiously every weekend, timezone math be damned.
+      </p>
+
+      <p>
+        I also stopped fighting the dual identity. I used to feel like I had to choose between being Kazakh or embracing Korean culture. Now I realize I can be both. I can love Seoul's efficient subway system and miss Almaty's mountains. I can enjoy kimchi and crave baursak. Identity isn't either/or—it's both/and.
+      </p>
+
+      <blockquote>
+        "The most important thing I learned in Seoul: you don't lose your roots by growing new branches."
+      </blockquote>
+
+      <p class="interview-q">
+        What do you wish people understood about being an international student in Korea?
+      </p>
+
+      <p>
+        That it's not all K-pop concerts and aesthetic cafes! The Instagram version of student life abroad is very different from the reality of navigating bureaucracy in your second language, dealing with immigration paperwork, handling cultural misunderstandings, and working twice as hard to prove yourself academically.
+      </p>
+
+      <p>
+        Also, that we're not just here for fun or because we couldn't get into universities at home. Every Kazakh student I know in Seoul is brilliant, hard-working, and here with specific academic and career goals. We're building bridges between Kazakhstan and Korea, contributing to both countries' futures.
+      </p>
+
+      <p class="interview-q">
+        Speaking of building bridges—do you plan to return to Kazakhstan after graduation?
+      </p>
+
+      <p>
+        That's the million-dollar question! Honestly, I'm not sure. I love Kazakhstan deeply—it's my home, my identity's foundation. But I've also built a life here. I speak Korean fluently, I have friends and professional networks, I understand how things work.
+      </p>
+
+      <p>
+        Ideally, I'd love to work in a role that connects Kazakhstan and Korea—maybe in diplomacy, international business, or cultural exchange. That way I don't have to choose one over the other. I can be a bridge.
+      </p>
+
+      <p class="interview-q">
+        What advice would you give Kazakh students considering studying in Korea?
+      </p>
+
+      <p>
+        First, learn Korean before you arrive. Even basic proficiency makes a huge difference in your adjustment and social integration. Don't rely only on English—many Koreans are shy about their English skills and will open up more if you speak Korean.
+      </p>
+
+      <p>
+        Second, be ready for intense academic culture. Korean universities are rigorous. Come prepared to work hard and manage stress healthily.
+      </p>
+
+      <p>
+        Third, actively build community. Join clubs, attend international student events, seek out other Kazakhs. Loneliness is the biggest threat to your mental health and academic success.
+      </p>
+
+      <p>
+        Fourth, embrace cultural differences instead of judging them. Things that seem weird initially—like removing shoes indoors or the complex hierarchy system—make sense within Korean cultural context. Approach differences with curiosity rather than criticism.
+      </p>
+
+      <p>
+        Finally, stay connected to Kazakhstan. Your Kazakh identity is an asset, not something to hide or minimize. Korean people are fascinated by different cultures when you present yours with pride and knowledge.
+      </p>
+
+      <p class="interview-q">
+        What's your favorite thing about living in Seoul?
+      </p>
+
+      <p>
+        The energy. Seoul never sleeps, and there's always something happening. You can study in a 24-hour cafe at 3 AM, attend a traditional temple ceremony in the morning, and go to a K-pop concert in the evening. The city honors its history while racing toward the future.
+      </p>
+
+      <p>
+        Also, the infrastructure. Everything works efficiently—public transportation is cheap and reliable, internet is lightning-fast, delivery service brings anything to your door within an hour. After growing up in Shymkent, this level of urban convenience still amazes me.
+      </p>
+
+      <p>
+        But most importantly, the sense of possibility. Seoul feels like a city where anything can happen if you work hard enough. That energy is infectious and motivating.
+      </p>
+
+      <p class="interview-q">
+        And what do you miss most about Kazakhstan?
+      </p>
+
+      <p>
+        Space. Open space. Seoul is crowded—amazing, but crowded. I miss Kazakhstan's vast landscapes, the sense of horizon stretching forever. I miss mountains you can actually hike for hours without encountering crowds.
+      </p>
+
+      <p>
+        I miss the food, obviously. Korean food is delicious, but sometimes you just need real plov or beshbarmak made the way your grandmother makes it. I miss seasonal fruits that taste right. I miss tea culture that doesn't involve coffee shops.
+      </p>
+
+      <p>
+        Most of all, I miss my family. Video calls are wonderful, but they can't replace hugs, can't replace being physically present for birthdays and holidays, can't replace the comfort of family dinners where everyone speaks your native language.
+      </p>
+
+      <p class="interview-q">
+        Last question: What has Seoul taught you about yourself?
+      </p>
+
+      <p>
+        That I'm more resilient than I thought. Moving to a country where I didn't speak the language fluently, didn't know anyone, had to navigate completely different cultural norms—that takes courage I didn't know I had.
+      </p>
+
+      <p>
+        Seoul taught me that growth happens outside comfort zones. Every challenge—language barriers, cultural misunderstandings, academic pressure—has made me stronger, more adaptable, more empathetic.
+      </p>
+
+      <p>
+        It also taught me about identity's complexity. I'm Kazakh, always will be. But I'm also someone shaped by living in Seoul, speaking Korean, navigating between cultures. These aren't contradictory identities—they're layers that make me more dimensional.
+      </p>
+
+      <p>
+        Seoul taught me that home isn't just where you're from—it's also who you become and where you grow. And sometimes, home can exist in multiple places simultaneously.
+      </p>
+
+      <blockquote>
+        "You don't have to choose between worlds. You can build bridges between them and walk back and forth freely."
+      </blockquote>
+
+    </div>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+      <div class="share-label">Share this article</div>
+      <div class="share-buttons">
+        <a href="#" class="share-btn">Twitter</a>
+        <a href="#" class="share-btn">LinkedIn</a>
+        <a href="#" class="share-btn">Facebook</a>
+      </div>
+    </div>
+
+  </article>
+
+</body>
+</html>

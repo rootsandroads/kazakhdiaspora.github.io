@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Migration - Roots and Roads</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===================================
+       CSS VARIABLES
+       =================================== */
+    :root {
+      /* Colors */
+      --background: #fafaf8;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --text-muted: #a0aec0;
+      --accent: #667eea;
+      --accent-hover: #5a67d8;
+      --border-soft: #e2e8f0;
+
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Spacing */
+      --max-width: 720px;
+      --section-spacing: 3rem;
+    }
+
+    /* ===================================
+       RESET & BASE STYLES
+       =================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background-color: var(--background);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===================================
+       NAVIGATION
+       =================================== */
+    .top-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-soft);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    /* ===================================
+       ARTICLE CONTAINER
+       =================================== */
+    .article-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--section-spacing) 2rem;
+    }
+
+    /* ===================================
+       ARTICLE HEADER
+       =================================== */
+    .category-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .article-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===================================
+       AUTHOR META
+       =================================== */
+    .author-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .author-name {
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .author-name:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .article-meta-details {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ===================================
+       FEATURE IMAGE
+       =================================== */
+    .feature-image {
+      width: 100%;
+      height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===================================
+       ARTICLE BODY
+       =================================== */
+    .article-body {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body p:first-child::first-letter {
+      font-size: 4rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      line-height: 1;
+      float: left;
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 2rem;
+      margin: 2.5rem 0;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .article-body a:hover {
+      color: var(--accent-hover);
+    }
+
+    .article-body ul, .article-body ol {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+    .article-footer {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-soft);
+      text-align: center;
+    }
+
+    .share-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .share-btn {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      background: white;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .share-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ===================================
+       RESPONSIVE
+       =================================== */
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 2rem;
+      }
+
+      .article-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .feature-image {
+        height: 300px;
+        border-radius: 8px;
+      }
+
+      .article-body {
+        font-size: 17px;
+      }
+
+      .article-body p:first-child::first-letter {
+        font-size: 3rem;
+      }
+
+      .article-body blockquote {
+        padding-left: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Roots and Roads</a>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </nav>
+
+  <!-- Article Container -->
+  <article class="article-wrapper">
+
+    <!-- Article Header -->
+    <div class="category-label">MIGRATION STORIES</div>
+
+    <h1 class="article-title">About "Migration": More Than Just Moving Countries</h1>
+
+    <p class="article-subtitle">
+      An exploration of what it truly means to leave home, build a new life abroad, and carry your roots with you wherever you go.
+    </p>
+
+    <!-- Author Meta -->
+    <div class="author-meta">
+      <div class="author-avatar">D</div>
+      <div class="author-info">
+        <div class="author-name">By Danelya</div>
+        <div class="article-meta-details">November 16, 2025 · 7 min read</div>
+      </div>
+    </div>
+
+    <!-- Feature Image -->
+    <div class="feature-image">
+      <!-- Replace with actual image: <img src="migration-cover.jpg" alt="Migration story cover"> -->
+      Feature Image Placeholder
+    </div>
+
+    <!-- Article Body -->
+    <div class="article-body">
+      <p>
+        Migration is not simply the act of moving from one geographical location to another. It's a profound transformation that reshapes your identity, challenges your understanding of home, and forces you to reconcile who you were with who you're becoming.
+      </p>
+
+      <p>
+        When I first left Kazakhstan to study abroad, I thought migration meant adventure, new opportunities, and freedom. I imagined myself as a cosmopolitan citizen of the world, unbound by borders and traditions. What I didn't anticipate was the quiet ache of displacement, the subtle ways in which leaving home would fundamentally alter my sense of self.
+      </p>
+
+      <h2>The Weight of Distance</h2>
+
+      <p>
+        There's a particular loneliness that comes with migration that no one prepares you for. It's not the dramatic, tear-stained loneliness of farewell scenes at airports. It's quieter, more persistent. It emerges in small moments: when you can't find the right words to explain a childhood memory, when holidays pass without the familiar rhythms of home, when you realize you're experiencing milestones your family will only hear about through phone screens.
+      </p>
+
+      <blockquote>
+        "Home is not a place, but a feeling of belonging that you carry within you—even when you're thousands of miles away from the land that raised you."
+      </blockquote>
+
+      <p>
+        Distance changes relationships in unexpected ways. Conversations with family become carefully scheduled events, timezone calculations become second nature, and you learn to compress months of experiences into brief video calls. You develop a parallel life that exists primarily in stories you'll tell when—if—you return.
+      </p>
+
+      <h2>Between Two Worlds</h2>
+
+      <p>
+        One of the most disorienting aspects of migration is the feeling of existing between worlds. You're no longer fully at home in your country of origin, but you'll never be completely native to your adopted land either. You become a cultural translator, constantly switching codes, explaining contexts, bridging gaps that others don't even notice exist.
+      </p>
+
+      <p>
+        Your identity becomes hyphenated, complex, difficult to summarize in simple terms. You're Kazakh, but also international. You're from there, but also from here. You belong everywhere and nowhere simultaneously. This liminal space can feel isolating, but it's also where some of the most interesting personal growth happens.
+      </p>
+
+      <h3>The Evolution of Home</h3>
+
+      <p>
+        Over time, I've come to understand that migration isn't about choosing between homes—it's about expanding your definition of home. Home becomes less about a fixed location and more about a constellation of people, memories, languages, and experiences that you carry with you.
+      </p>
+
+      <p>
+        You learn to find home in unexpected places: in the familiar melody of your native language overheard on a crowded subway, in restaurants that serve food that tastes almost like your grandmother's cooking, in friendships with other migrants who understand the particular brand of nostalgia you carry.
+      </p>
+
+      <h2>The Gift of Perspective</h2>
+
+      <p>
+        Despite its challenges, migration offers an invaluable gift: perspective. Living abroad forces you to question assumptions you didn't even know you held. You see your home country with new eyes—appreciating aspects you once took for granted, while also recognizing limitations you were too close to notice before.
+      </p>
+
+      <p>
+        You develop a deeper understanding of cultural relativity, learning that there are multiple valid ways to organize societies, raise children, define success, and live meaningful lives. This awareness doesn't make you rootless; it makes you thoughtful, adaptable, and empathetic.
+      </p>
+
+      <blockquote>
+        "Migration taught me that strength isn't about staying rooted in one place—it's about learning to grow wherever you're planted while remembering where you came from."
+      </blockquote>
+
+      <h2>Redefining Success</h2>
+
+      <p>
+        For many Kazakh students and professionals abroad, there's immense pressure to justify migration through conventional success metrics: prestigious degrees, high-paying jobs, impressive LinkedIn profiles. But I've learned that migration's true value often lies in subtler transformations.
+      </p>
+
+      <p>
+        Success might mean learning to be comfortable with discomfort. It might mean developing resilience you didn't know you needed. It might mean discovering aspects of yourself that would have remained dormant if you'd never left home. It might mean building bridges between cultures, creating spaces where others feel less alone in their displacement.
+      </p>
+
+      <h2>Carrying Your Roots Forward</h2>
+
+      <p>
+        The most important lesson migration has taught me is that your roots don't anchor you to one place—they travel with you. Your culture, language, values, and memories aren't left behind when you cross borders; they become part of the unique perspective you bring to every new place you inhabit.
+      </p>
+
+      <p>
+        You don't have to choose between honoring your heritage and embracing new experiences. You can be deeply Kazakh while also being genuinely engaged with your adopted home. You can speak multiple languages, celebrate different holidays, hold complex identities that refuse simple categorization.
+      </p>
+
+      <p>
+        Migration is messy, complicated, and often difficult. But it's also enriching, transformative, and deeply human. It's about courage—not the dramatic courage of grand adventures, but the quiet courage of showing up every day in a place that doesn't yet feel like home and building a life there anyway.
+      </p>
+
+      <p>
+        To every Kazakh student or professional reading this from abroad: your experience is valid, your struggles are real, and your hybrid identity is not a weakness but a strength. You are not lost between worlds—you are building bridges between them.
+      </p>
+    </div>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+      <div class="share-label">Share this article</div>
+      <div class="share-buttons">
+        <a href="#" class="share-btn">Twitter</a>
+        <a href="#" class="share-btn">LinkedIn</a>
+        <a href="#" class="share-btn">Facebook</a>
+      </div>
+    </div>
+
+  </article>
+
+</body>
+</html>
