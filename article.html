@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Article - Roots and Roads</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="article.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- MAIN PAGE WRAPPER -->
+<div class="page-wrapper">
+
+  <!-- TOP BAR: NAV + LOGO -->
+  <header class="top-bar">
+    <nav class="nav-left">
+      <a href="about.html">ABOUT</a>
+      <a href="articles.html">ARTICLES</a>
+    </nav>
+
+    <div class="logo-wordmark">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <div class="logo-main">Roots and Roads</div>
+      </a>
+    </div>
+
+    <nav class="nav-right">
+      <a href="index.html#map-page">KAZAKH DIASPORA</a>
+      <a href="index.html#contribute-btn">CONTRIBUTE</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <div class="article-content">
+
+    <!-- Article Header -->
+    <div class="category-label" id="article-category">LOADING...</div>
+
+    <h1 class="article-title" id="article-title">Loading Article...</h1>
+
+    <p class="article-subtitle" id="article-subtitle">
+      Please wait while we load the article content.
+    </p>
+
+    <!-- Author Meta -->
+    <div class="author-meta">
+      <div class="author-avatar" id="article-avatar">?</div>
+      <div class="author-info">
+        <div class="author-name" id="article-author">By Author</div>
+        <div class="article-meta-details" id="article-meta">Date · Reading time</div>
+      </div>
+    </div>
+
+    <!-- Feature Image -->
+    <div class="feature-image" id="article-image">
+      Feature Image Placeholder
+    </div>
+
+    <!-- Article Body -->
+    <div class="article-body" id="article-body">
+      <p>Loading article content...</p>
+    </div>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+      <div class="share-label">Share this article</div>
+      <div class="share-buttons">
+        <a href="#" class="share-btn" onclick="shareOnTwitter(); return false;">Twitter</a>
+        <a href="#" class="share-btn" onclick="shareOnLinkedIn(); return false;">LinkedIn</a>
+        <a href="#" class="share-btn" onclick="shareOnFacebook(); return false;">Facebook</a>
+        <span id="pdf-download-btn"></span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Article Data -->
+<script src="articles-data.js"></script>
+
+<!-- Dynamic Content Loading Script -->
+<script>
+  // Get article ID from URL parameter
+  function getArticleIdFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('id');
+  }
+
+  // Load and display article
+  function loadArticle() {
+    const articleId = getArticleIdFromURL();
+
+    if (!articleId) {
+      showError('No article specified. Redirecting to homepage...');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+      return;
+    }
+
+    const article = getArticle(articleId);
+
+    if (!article) {
+      showError('Article not found. Redirecting to homepage...');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+      return;
+    }
+
+    // Populate the page with article data
+    document.getElementById('page-title').textContent = article.title + ' - Roots and Roads';
+    document.getElementById('article-category').textContent = article.category;
+    document.getElementById('article-title').textContent = article.title;
+    document.getElementById('article-subtitle').textContent = article.subtitle;
+    document.getElementById('article-avatar').textContent = article.authorInitial;
+    document.getElementById('article-author').textContent = 'By ' + article.author;
+    document.getElementById('article-meta').textContent = article.date + ' · ' + article.readTime;
+    document.getElementById('article-body').innerHTML = article.content;
+
+    // Handle image
+    const imageContainer = document.getElementById('article-image');
+    if (article.image) {
+      imageContainer.innerHTML = `<img src="${article.image}" alt="${article.title}">`;
+    } else {
+      imageContainer.textContent = 'Feature Image Placeholder';
+    }
+
+    // Handle PDF download button
+    const pdfDownloadBtn = document.getElementById('pdf-download-btn');
+    if (article.isPDF) {
+      pdfDownloadBtn.innerHTML = '<a href="student-mobility-research-2025.pdf" download class="share-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">📥 Download PDF</a>';
+    }
+  }
+
+  // Show error message
+  function showError(message) {
+    document.getElementById('article-title').textContent = 'Error';
+    document.getElementById('article-subtitle').textContent = message;
+    document.getElementById('article-body').innerHTML = '<p>' + message + '</p>';
+  }
+
+  // Share functions
+  function shareOnTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(document.getElementById('article-title').textContent);
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  }
+
+  // Load article when page loads
+  document.addEventListener('DOMContentLoaded', loadArticle);
+</script>
+
+</body>
+</html>

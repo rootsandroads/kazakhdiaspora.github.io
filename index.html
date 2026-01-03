@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#f7f5f2">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Roots and Roads</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<!-- ROOTS & ROADS – MAIN PAGE -->
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+    <li><a href="#map-page" class="mobile-nav-link">Explore</a></li>
+    <li><a href="articles.html" class="mobile-nav-link">Articles</a></li>
+    <li><a href="about.html" class="mobile-nav-link">About</a></li>
+  </ul>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-1n1FoTiyc4o1ckP8Rvle98BoafOM49-iAZbx3l2ut6SqnA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="mobile-nav-cta pill-button" id="mobile-contribute-btn">ADD YOUR STORY!</a>
+</nav>
+
+<div class="page-wrapper">
+
+    <!-- TOP BAR: NAV + LOGO -->
+    <header class="top-bar">
+      <!-- Desktop Navigation Left -->
+      <nav class="nav-left desktop-nav">
+        <a href="about.html">ABOUT</a>
+        <a href="articles.html">ARTICLES</a>
+      </nav>
+
+      <!-- Logo (visible on both mobile and desktop) -->
+      <div class="logo-wordmark">
+        <div class="logo-main">Roots and Roads</div>
+      </div>
+
+      <!-- Desktop Navigation Right -->
+      <nav class="nav-right desktop-nav">
+        <a href="#map-page" class="map-link">KAZAKH DIASPORA</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-1n1FoTiyc4o1ckP8Rvle98BoafOM49-iAZbx3l2ut6SqnA/viewform?usp=header" target="_blank" rel="noopener noreferrer">CONTRIBUTE</a>
+      </nav>
+
+      <!-- Mobile Hamburger Menu -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </header>
+  
+    <!-- HERO FRAME WITH GLOBE -->
+    <section class="hero-frame">
+      <div class="globe-area">
+        <div class="globe-ring">
+          <div id="globe" class="globe">
+            <!-- 3D globe will be rendered here -->
+          </div>
+        </div>
+      </div>
+  
+      <!-- small notes around the globe -->
+      <div class="globe-note note-top-left">
+        Share your story! →
+      </div>
+      <div class="globe-note note-bottom-left">
+        Get to know how Kazakh people live abroad ↗
+      </div>
+      <div class="globe-note note-right">
+        ← Unique stories. Advice. Individuals.
+      </div>
+  
+      <!-- CTA bottom-right -->
+      <div class="hero-cta">
+        <p class="cta-label">CLICK TO EXPLORE</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-1n1FoTiyc4o1ckP8Rvle98BoafOM49-iAZbx3l2ut6SqnA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="pill-button" id="contribute-btn">ADD YOUR STORY!</a>
+      </div>
+    </section>
+  
+    <!-- FLIP CARDS SECTION: RESEARCH INSIGHTS -->
+    <section class="flip-cards-section">
+      <div class="flip-cards-container">
+
+        <!-- Card 1: Why students leave -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-label">Survey Insight 01</div>
+              <h3 class="card-question">Why do Kazakh students choose to study abroad?</h3>
+              <p class="card-tagline">Behind every departure is more than a diploma.</p>
+              <div class="flip-hint">Click to reveal insight →</div>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-label">Survey Insight 01</div>
+              <h4 class="card-data-heading">According to the Roots & Roads survey:</h4>
+              <p class="card-data-text">
+                Most respondents did not choose to study abroad solely for university rankings or prestige. The strongest motivations were better career prospects, access to higher-quality education, cultural experience, and international exposure. A significant number also pointed to limited opportunities in their home country.
+              </p>
+              <div class="card-insight">
+                <strong>Insight:</strong> Studying abroad is rarely an escape. For many Kazakh students, it is a deliberate step toward growth, independence, and broader professional horizons — not a rejection of home, but an expansion of possibility.
+              </div>
+              <div class="flip-hint">Click to return ←</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: The fears before departure -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-label">Survey Insight 02</div>
+              <h3 class="card-question">What students feared most before leaving</h3>
+              <p class="card-tagline">Excitement often comes with quiet doubts.</p>
+              <div class="flip-hint">Click to reveal insight →</div>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-label">Survey Insight 02</div>
+              <h4 class="card-data-heading">According to the Roots & Roads survey:</h4>
+              <p class="card-data-text">
+                Before applying, students most frequently reported concerns about financial burden, academic pressure, language barriers, homesickness, and visa or legal uncertainty. These fears appeared consistently across different countries and study levels.
+              </p>
+              <div class="card-insight">
+                <strong>Insight:</strong> Fear is not an individual weakness — it is a shared starting point. Almost every student begins their journey with uncertainty, yet these concerns rarely determine outcomes. They mark the beginning of adaptation.
+              </div>
+              <div class="flip-hint">Click to return ←</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: The reality of life abroad -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-label">Survey Insight 03</div>
+              <h3 class="card-question">What students actually struggled with abroad</h3>
+              <p class="card-tagline">The reality is more complex than expectations.</p>
+              <div class="flip-hint">Click to reveal insight →</div>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-label">Survey Insight 03</div>
+              <h4 class="card-data-heading">According to the Roots & Roads survey:</h4>
+              <p class="card-data-text">
+                Students most often described challenges related to loneliness, financial stress, cultural adjustment, academic pressure, and emotional exhaustion. Many emphasized that the most difficult part was not studying itself, but learning to live independently far from family support.
+              </p>
+              <div class="card-insight">
+                <strong>Insight:</strong> Life abroad builds resilience before success. Growth often happens through everyday struggles that are rarely visible, but deeply transformative.
+              </div>
+              <div class="flip-hint">Click to return ←</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Was it worth it? -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-label">Survey Insight 04</div>
+              <h3 class="card-question">Would students choose this path again?</h3>
+              <p class="card-tagline">After everything they experienced.</p>
+              <div class="flip-hint">Click to reveal insight →</div>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-label">Survey Insight 04</div>
+              <h4 class="card-data-heading">According to the Roots & Roads survey:</h4>
+              <p class="card-data-text">
+                The majority of respondents indicated they would definitely or probably choose to study abroad again. Overall satisfaction levels were high, even among students who reported significant challenges.
+              </p>
+              <div class="card-insight">
+                <strong>Insight:</strong> Studying abroad is not perfect — but it is meaningful. For most students, the independence, perspective, and personal growth gained outweigh the difficulties they faced along the way.
+              </div>
+              <div class="flip-hint">Click to return ←</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  
+    <!-- ARTICLES -->
+    <section class="articles-section">
+      <h2 class="section-heading">ARTICLES</h2>
+
+      <div class="articles-row">
+        <a href="article.html?id=migration" class="article-card">
+          <p class="article-tag">ARTICLE</p>
+          <h3>About "Migration"</h3>
+          <p class="article-meta">By Danelya · 16 November 2025</p>
+        </a>
+
+        <a href="article.html?id=study-abroad" class="article-card">
+          <p class="article-tag">ESSAY</p>
+          <h3>Is it worth studying abroad?</h3>
+          <p class="article-meta">By Maria · 17 November 2025</p>
+        </a>
+
+        <a href="article.html?id=belonging" class="article-card">
+          <p class="article-tag">STORY</p>
+          <h3>How it feels to not belong anywhere</h3>
+          <p class="article-meta">By Sena · 16 November 2025</p>
+        </a>
+      </div>
+    </section>
+  
+    <!-- R & R MONOGRAM -->
+    <section class="rr-section">
+      <div class="rr-logo">R &amp; R</div>
+    </section>
+  
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-left">
+        <p class="footer-title">Join us and share your story!</p>
+        <div class="subscribe-row">
+          <input type="email" placeholder="email">
+          <button class="pill-button pill-small">SUBSCRIBE</button>
+        </div>
+      </div>
+  
+      <div class="footer-right">
+        <a href="https://www.instagram.com/rootsnroads.pr/" target="_blank" rel="noopener noreferrer" class="social-item">
+          <span class="social-icon ig"></span>
+          <span>Instagram</span>
+        </a>
+        <a href="https://t.me/+LZ8IFNXxFJo2MTM0" target="_blank" rel="noopener noreferrer" class="social-item">
+          <span class="social-icon tg"></span>
+          <span>Telegram</span>
+        </a>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(102, 126, 234, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: 'Montserrat', sans-serif;
+  ">
+    <div style="
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top: 5px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    "></div>
+    <p style="
+      margin-top: 20px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+    ">Loading Stories...</p>
+    <p id="loading-status" style="
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    ">Fetching data from Google Sheets</p>
+  </div>
+
+  <!-- MAP PAGE -->
+  <section id="map-page" class="map-page">
+    <button id="back-btn" class="back-btn">← BACK</button>
+    <h2>Explore the Kazakh Diaspora</h2>
+    <p class="map-text">
+      Here will be an interactive world map where you can zoom in on countries
+      and read stories from Kazakh students and professionals.
+    </p>
+    <div class="map-placeholder" id="map-container"></div>
+
+    <!-- Dashboard Stats -->
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <h3 id="total-students">0</h3>
+        <p>Total Students</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="total-countries">0</h3>
+        <p>Countries</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="latest-story">0</h3>
+        <p>Stories Shared</p>
+      </div>
+    </div>
+  </section>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.159.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
